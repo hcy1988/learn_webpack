@@ -13,7 +13,12 @@ module.exports = {
                 use:[
                     //{loader:"style-loader"}
                     "style-loader",
-                    "css-loader",
+                    {
+                        loader:"css-loader",
+                        options: {
+                            esModule: false
+                        }
+                    },
                     "postcss-loader"
                     // {
                     //     loader:"postcss-loader",
@@ -37,7 +42,15 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|bmp)/,
-                type:"asset/resource"
+                use:[
+                    {
+                        loader:"file-loader",
+                        options: {
+                            name: "[name].[hash:6].[ext]",
+                            outputPath: "img"
+                        }
+                    }
+                ]
             }
         ]
     }
