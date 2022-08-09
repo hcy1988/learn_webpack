@@ -13,12 +13,13 @@ module.exports = {
                 use:[
                     //{loader:"style-loader"}
                     "style-loader",
-                    {
-                        loader:"css-loader",
-                        options: {
-                            esModule: false
-                        }
-                    },
+                    "css-loader",
+                    // {
+                    //     loader:"css-loader",
+                    //     options: {
+                    //         esModule: false
+                    //     }
+                    // },
                     "postcss-loader"
                     // {
                     //     loader:"postcss-loader",
@@ -42,15 +43,39 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|bmp)/,
-                use:[
-                    {
-                        loader:"file-loader",
-                        options: {
-                            name: "[name].[hash:6].[ext]",
-                            outputPath: "img"
-                        }
-                    }
-                ]
+                // use:[
+                //     {
+                //         loader:"file-loader",
+                //         options: {
+                //             name: "[name].[hash:6].[ext]",
+                //             outputPath: "img"
+                //         }
+                //     }
+                // ]
+                type: "asset",
+                generator: {
+                    filename: "img/[name]_[hash:6][ext]"
+                }
+            },
+            {
+                test: /\.svg$/,
+                type: "asset",
+                generator: {
+                    filename: "svg/[name]_[hash:4][ext]"
+                },
+                // parser: {
+                //     dataUrlCondition:{
+                //         maxSize: 400 * 1024 //4Kb
+                //     }
+                    
+                // }
+            },
+            {
+                test: /\.ttf/,
+                type: "asset",
+                generator: {
+                    filename: "font/[name][ext]"
+                }
             }
         ]
     }
