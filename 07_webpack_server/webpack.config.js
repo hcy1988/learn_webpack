@@ -7,6 +7,7 @@ const {VueLoaderPlugin} = require("vue-loader/dist/index");
 
 
 module.exports = {
+    target: "web",
     mode:"development",
     devtool: "source-map",
     // A method to watch when code is changed, the site will be effect.
@@ -26,6 +27,39 @@ module.exports = {
         static: {
             directory: "./abc"
             //directory: "./public" 開発段階
+        },
+        //hot module replacement option, but vue-loader is effect to vue file
+        //hot: true,
+        //We can set host and port
+        //host: "0.0.0.0",
+        //port: 8888,
+        //npm run serve will open browser automatically 
+        open: true, // same to write "--open" behind "webpack serve"
+        //Compress files with gzip
+        // compress: true,
+
+        //如果需要本地解决跨域请求资源的问题，可以使用proxy来实现
+        // proxy: {
+        //     "/api": {
+        //         target: "http://localhost:8888",
+        //         pathRewrite: {
+        //             '^/api': ''
+        //         },
+        //         secure: false，   //如果需要接触https的认证证书问题，可以将secure设置为false
+        //         changeOrigin: true,  //修改请求源，让代理代替自己。主要是应对某些网站过滤域名。因为不加changeOrigin的话，请求源的head是localhost，如果对象网页有check head的话，就会失败
+        //     }
+        // }
+    },
+    resolve: {
+        // modules: ["nodemodule"],
+        //当添加extensions里的后缀后，import时可以不写后缀
+        extensions: [
+            ".js", ".json", ".mjs", ".vue"
+        ],
+        //别名可以设置路径的别名
+        alias: {
+            "@": path.resolve(__dirname,"./src"), //需要些./src的时候可以写成@
+
         }
     },
     module:{

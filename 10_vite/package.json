@@ -1,0 +1,27 @@
+{
+  "name": "learn_vite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vitejs/create-app": "^2.5.2",
+    "g": "^2.0.1",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.0.3",
+    "@vue/compiler-sfc": "^3.2.37",
+    "less": "^4.1.3",
+    "postcss": "^8.4.16",
+    "postcss-preset-env": "^7.8.0",
+    "vite": "^3.0.8",
+    "vue": "^3.2.37"
+  }
+}
